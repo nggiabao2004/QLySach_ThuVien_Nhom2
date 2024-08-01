@@ -14,9 +14,6 @@ public class CalculaltorWindowApp {
 
 
         CalcualtorView calcualtorViewRemote = new CalcualtorView(calculatorModelRemote);
-
-        
-        // calcualtorViewRemote.setCalculatorModelRemote(calculatorModelRemote);
        
         
         calcualtorViewRemote.setCommandProcessorRemote(commandProcessorRemote);

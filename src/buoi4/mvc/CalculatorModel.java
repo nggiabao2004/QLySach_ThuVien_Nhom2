@@ -117,29 +117,7 @@ public class CalculatorModel extends Publisher  {
         //thực thi câu query
         rsRemote = statementRemote.executeQuery(sql);
 
-        // //in danh sách nhân viên ra màn hình
-        // while (rsRemote.next()) {
-        //     // int empId = rsRemote.getInt(1);
-        //     // String empNo = rsRemote.getString(2);
-        //     // String empName = rsRemote.getString("Emp_Name");
-        //     // System.out.println("--------------------");
-        //     // System.out.println("EmpId:" + empId);
-        //     // System.out.println("EmpNo:" + empNo);
-        //     // System.out.println("EmpName:" + empName);
-
-        //     String idSach = rsRemote.getString(1);
-        //     String ngayNhap = rsRemote.getString(2);
-        //     String donGia = rsRemote.getString(3);
-        //     String soLuong = rsRemote.getString(4);
-
-        //     System.out.println("--------------------");
-        //     System.out.println("Mã Sách" + idSach);
-        //     System.out.println("Ngày Nhập" + ngayNhap);
-        //     System.err.println("Đơn Giá" + donGia);
-        //     System.out.println("Số Lượng" + soLuong);
-
-        // }
-        // connection.close();
+        
 
         // Tạo mô hình bảng
         DefaultTableModel model = new DefaultTableModel();

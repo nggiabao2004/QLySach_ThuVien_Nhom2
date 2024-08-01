@@ -1,6 +1,5 @@
 package buoi4.mvc;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,7 +12,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Library.Sach;
 import buoi4.mvc.command_processor.C2FCommand;
 import buoi4.mvc.command_processor.Command;
 import buoi4.mvc.command_processor.CommandProcessor;
@@ -40,7 +38,6 @@ public class CalcualtorView extends JFrame implements Subcriber
     //private CalculatorController calculatorControlRemote;
     
     private MenuController menuControllerRemote = null;
-    private EnterController enterControllerRemote = null;
 
     private CalculatorModel calculatorModelRemote;
 
@@ -72,7 +69,6 @@ public class CalcualtorView extends JFrame implements Subcriber
         menuControllerRemote = new MenuController();
 
         
-        enterControllerRemote = new EnterController();
 
         buildPanel();
         buildMenu();
@@ -92,13 +88,11 @@ public class CalcualtorView extends JFrame implements Subcriber
 
         jLabelInputRemote1 = new JLabel("ID Sách");
         jTextFieldInputRemote1 = new JTextField(10);
-        jTextFieldInputRemote1.addActionListener(enterControllerRemote);
         jPanelRemote.add(jLabelInputRemote1);
         jPanelRemote.add(jTextFieldInputRemote1);
 
         jLabelInputRemote2 = new JLabel("Ngày Nhập");
         jTextFieldInputRemote2 = new JTextField(10);
-        jTextFieldInputRemote2.addActionListener(enterControllerRemote);
         jPanelRemote.add(jLabelInputRemote2);
         jPanelRemote.add(jTextFieldInputRemote2);
 
@@ -248,36 +242,6 @@ public class CalcualtorView extends JFrame implements Subcriber
         }
     }
 
-    class EnterController implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Command commandRemote = null;
-            double f, c;
-            String cmd = e.getActionCommand();
-            String num = e.getActionCommand();
-
-            if (num.equals(jTextFieldInputRemote2.getText())) {
-                cmd = "f2c";
-            } else if (num.equals(jTextFieldInputRemote1.getText())) {
-                cmd = "c2f";
-            }
-            if (cmd.equals("f2c")) {
-                f = Double.parseDouble(jTextFieldInputRemote2.getText());
-                
-                commandRemote = new F2CCommand(calculatorModelRemote, f);
-                commandProcessorRemote.execute(commandRemote);
-
-            } else if (cmd.equals("c2f")) {
-                c = Double.parseDouble(jTextFieldInputRemote1.getText());
-                commandRemote = new C2FCommand(calculatorModelRemote, c);
-                commandProcessorRemote.execute(commandRemote);
-
-            } else if (cmd.equals("exit")) {
-                calculatorModelRemote.exit();
-            }
-        }
-    }
 
     @Override
     public void update() {
